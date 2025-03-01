@@ -21,17 +21,16 @@ jobs:
       - name: Render Helm templates
         uses: helmfile/helmfile-action@v2
         with:
-          helm-plugins: >
-            https://github.com/databus23/helm-diff,
-            https://github.com/jkroepke/helm-secrets
           helmfile-args: template --output-dir-template rendered/{{.Release.Name}}
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
+          add-paths: rendered
           commit-message: "[Helmfile] Update rendered Helm templates"
           title: "[Helmfile] Merge rendered Helm templates"
           body: |
             > Triggered by ${{ github.event_name }} to ${{ github.ref }}
-          branch: helmfile/rendered
-          delete-branch: true
+          branch: rendered/pr
+          base: rendered/main
+          reviewers: audacioustux
