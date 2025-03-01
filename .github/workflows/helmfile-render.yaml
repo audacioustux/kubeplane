@@ -24,8 +24,8 @@ jobs:
       - name: Render Helm templates
         uses: helmfile/helmfile-action@v1.0.0
         with:
-          helmfile_version: ${{ env.HELMFILE_VERSION }}
-          helm_version: ${{ env.HELM_VERSION }}
+          helmfile-version: ${{ env.HELMFILE_VERSION }}
+          helm-version: ${{ env.HELM_VERSION }}
           helm-plugins: >
             https://github.com/databus23/helm-diff,
             https://github.com/jkroepke/helm-secrets
