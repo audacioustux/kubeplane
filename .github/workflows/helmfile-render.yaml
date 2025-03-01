@@ -29,7 +29,6 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "[Helmfile] Update rendered Helm templates"
           title: "[Helmfile] Merge rendered Helm templates"
           body: |
