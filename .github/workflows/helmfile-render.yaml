@@ -6,9 +6,6 @@ on:
   pull_request:
     branches:
       - main
-env:
-  HELM_VERSION: v3.17.1
-  HELMFILE_VERSION: v0.171.0
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -22,15 +19,12 @@ jobs:
           fetch-depth: 0
 
       - name: Render Helm templates
-        uses: helmfile/helmfile-action@v1.0.0
+        uses: helmfile/helmfile-action@v2
         with:
-          helmfile-version: ${{ env.HELMFILE_VERSION }}
-          helm-version: ${{ env.HELM_VERSION }}
           helm-plugins: >
             https://github.com/databus23/helm-diff,
             https://github.com/jkroepke/helm-secrets
-          helmfile-args: template --output-dir-template $(pwd)/rendered/{{.Release.Name}}
-          helmfile-auto-init: "true"
+          helmfile-args: template --output-dir-template "$(pwd)/rendered/{{.Release.Name}}"
 
       - name: Commit rendered files
         run: |
