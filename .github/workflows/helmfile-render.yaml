@@ -23,7 +23,7 @@ jobs:
       - name: Render Helm templates
         uses: helmfile/helmfile-action@v2
         with:
-          helmfile-args: template --output-dir-template rendered/{{.Release.Name}}
+          helmfile-args: template --output-dir rendered --output-dir-template '{{ .OutputDir }}/{{ .Release.Name }}'
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
