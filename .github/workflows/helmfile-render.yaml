@@ -30,7 +30,7 @@ jobs:
             https://github.com/databus23/helm-diff,
             https://github.com/jkroepke/helm-secrets
           helmfile-args: template --output-dir-template $(pwd)/rendered/{{.Release.Name}}
-          helmfile-auto-init: true
+          helmfile-auto-init: "true"
 
       - name: Commit rendered files
         run: |
