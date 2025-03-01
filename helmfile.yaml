@@ -4,7 +4,7 @@ repositories:
   - name: jetstack
     url: https://charts.jetstack.io
   - name: cnpg
-    url: https://charts.cnpg.io
+    url: https://cloudnative-pg.github.io/charts
 
 releases:
   - name: argocd
