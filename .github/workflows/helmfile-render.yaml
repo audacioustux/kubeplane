@@ -33,5 +33,5 @@ jobs:
           title: "[Helmfile] Merge rendered Helm templates"
           body: |
             > Triggered by ${{ github.event_name }} to ${{ github.ref }}
-          branch: helmfile-rendered
+          branch: helmfile/rendered
           delete-branch: true
