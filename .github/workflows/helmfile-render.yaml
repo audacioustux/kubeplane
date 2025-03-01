@@ -33,6 +33,6 @@ jobs:
           title: "[Helmfile] Merge rendered Helm templates"
           body: |
             > Triggered by ${{ github.event_name }} to ${{ github.ref }}
-          branch: canary
+          branch: releases/canary
           base: main
           reviewers: audacioustux
