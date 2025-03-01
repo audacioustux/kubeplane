@@ -36,10 +36,12 @@ jobs:
           git commit -m "Update rendered Helm templates"
           git push origin update-rendered-templates
 
-      - name: Create Pull Request
-        run: |
-          gh pr create --base main --head update-rendered-templates \
-            --title "Update rendered Helm templates" \
-            --body "This PR updates the rendered Helm templates."
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            Update rendered Helm templates
+
+            * Triggered by ${{ github.event_name }} to ${{ github.ref }}
+          delete-branch: true
