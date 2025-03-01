@@ -32,5 +32,5 @@ jobs:
           body: |
             > Triggered by ${{ github.event_name }} to ${{ github.ref }}
           branch: rendered/pr
-          base: rendered/main
+          base: main
           reviewers: audacioustux
