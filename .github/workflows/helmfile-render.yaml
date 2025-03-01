@@ -26,22 +26,13 @@ jobs:
             https://github.com/jkroepke/helm-secrets
           helmfile-args: template --output-dir-template rendered/{{.Release.Name}}
 
-      - name: Commit rendered files
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          git checkout -b update-rendered-templates
-          git add rendered/
-          git commit -m "Update rendered Helm templates"
-          git push origin update-rendered-templates
-
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: |
-            Update rendered Helm templates
-
-            * Triggered by ${{ github.event_name }} to ${{ github.ref }}
+          commit-message: "[Helmfile] Update rendered Helm templates"
+          title: "[Helmfile] Merge rendered Helm templates"
+          body: |
+            > Triggered by ${{ github.event_name }} to ${{ github.ref }}
+          branch: helmfile-rendered
           delete-branch: true
