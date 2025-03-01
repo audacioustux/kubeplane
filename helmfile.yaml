@@ -1,0 +1,21 @@
+repositories:
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+releases:
+  - name: argocd
+    namespace: argocd
+    createNamespace: true
+    chart: argo/argo-cd
+    version: ~7.8.0 
+    values:
+      - values/argocd-values.yaml
+  - name: cert-manager
+    namespace: cert-manager
+    createNamespace: true
+    chart: jetstack/cert-manager
+    version: ~v1.17.0
+    values:
+      - values/cert-manager-values.yaml
