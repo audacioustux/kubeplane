@@ -8,6 +8,8 @@ on:
       - main
 jobs:
   render:
+    # Only run this job if the PR is not from the canary branch
+    if: github.event.pull_request.head.ref != 'canary'
     runs-on: ubuntu-latest
     permissions:
       contents: write # Needed to push changes
@@ -31,6 +33,6 @@ jobs:
           title: "[Helmfile] Merge rendered Helm templates"
           body: |
             > Triggered by ${{ github.event_name }} to ${{ github.ref }}
-          branch: rendered/pr
+          branch: canary
           base: main
           reviewers: audacioustux
