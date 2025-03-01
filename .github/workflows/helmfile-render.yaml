@@ -24,7 +24,7 @@ jobs:
           helm-plugins: >
             https://github.com/databus23/helm-diff,
             https://github.com/jkroepke/helm-secrets
-          helmfile-args: template --output-dir-template "$(pwd)/rendered/{{.Release.Name}}"
+          helmfile-args: template --output-dir-template rendered/{{.Release.Name}}
 
       - name: Commit rendered files
         run: |
