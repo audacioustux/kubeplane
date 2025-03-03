@@ -1,0 +1,36 @@
+{
+  "name": "Devbox Remote Container",
+  "dockerComposeFile": "compose.yml",
+  "service": "devbox",
+  "remoteUser": "devbox",
+  "containerEnv": {
+    "WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
+    "ZDOTDIR": "${containerWorkspaceFolder}/.devcontainer/zsh"
+  },
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "git.autofetch": true,
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "resmon.show.cpufreq": false,
+        "devbox.autoShellOnTerminal": false,
+        "files.associations": {
+          "devbox.json": "jsonc"
+        }
+      },
+      "extensions": [
+        "jetpack-io.devbox",
+        "mutantdino.resourcemonitor",
+        "Gruntfuggly.todo-tree",
+        "ms-azuretools.vscode-docker",
+        "sleistner.vscode-fileutils",
+        "DavidAnson.vscode-markdownlint"
+      ]
+    }
+  },
+  "onCreateCommand": "TERM=dumb zsh -i -c 'task env:init'",
+  "updateContentCommand": "TERM=dumb zsh -i -c 'task env:update'"
+}

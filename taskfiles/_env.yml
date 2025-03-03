@@ -1,0 +1,29 @@
+version: "3"
+
+tasks:
+  init:
+    desc: Initialize development environment
+    deps:
+      - task: install:_
+    cmds:
+      - task: install:_:pkgs
+      - task: configure:_
+
+  install:_:
+    deps:
+
+  install:_:pkgs:
+    deps:
+
+  configure:_:
+    desc: Configure development tools
+    deps:
+      - task: configure:pre-commit
+      - task: configure:gh
+  configure:pre-commit: pre-commit install
+  configure:gh: sudo ln -snf $(which gh) /usr/bin/gh
+
+  update:
+    desc: Update dependencies and build artifacts
+    ignore_error: true
+    cmds:

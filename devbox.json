@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/latest/.schema/devbox.schema.json",
+  "packages": [
+    "oh-my-zsh@latest",
+    "zsh-autosuggestions@latest",
+    "zsh-syntax-highlighting@latest",
+    "ripgrep@latest",
+    "libiconv@latest",
+    "cloc@latest",
+    "go-task@latest",
+    "zoxide@latest",
+    "moreutils@latest",
+    "fzf@latest",
+    "httpie@latest",
+    "bat@latest",
+    "inotify-tools@latest",
+    "jq@latest",
+    "kubernetes-helm@latest",
+    "kubectl@latest",
+    "k9s@latest",
+    "unzip@latest",
+    "curl@latest",
+    "coreutils@latest",
+    "ncurses@latest",
+    "perl@latest",
+    "openssl@latest",
+    "autoconf@latest",
+    "git@latest",
+    "elixir@latest",
+    "nodejs@latest",
+    "flyctl@latest",
+    "minikube@latest",
+    "neovim@latest",
+    "docker-client@latest",
+    "github:audacioustux/bashlets",
+    "iputils@latest",
+    "unixtools.procps@latest",
+    "rustup@latest",
+    "pipx@latest",
+    "rebar3@latest",
+    "glibcLocales@latest",
+    "pkg-config@latest",
+    "gh@latest",
+    "pre-commit@latest",
+    "deno@latest",
+    "strace@latest",
+    "hyperfine@latest"
+  ],
+  "env": {
+    "PATH": "$HOME/bin:$HOME/.local/bin:$PATH",
+    "ERL_AFLAGS": "+pc unicode -kernel shell_history enabled",
+    "ELIXIR_ERL_OPTIONS": "+fnu +sssdio 128"
+  },
+  "shell": {
+    "init_hook": [
+      "[ -f .env ] && source .env"
+    ],
+    "scripts": {}
+  }
+}

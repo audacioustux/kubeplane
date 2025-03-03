@@ -1,0 +1,25 @@
+argo-cd:
+  dex:
+    enabled: false
+  notifications:
+    enabled: false
+  applicationSet:
+    enabled: false
+configs:
+  cmp:
+    create: true
+    plugins:
+      helmfile:
+        version: v0.171.0
+        init:
+          command: helmfile
+          args:
+            - init
+            - --force
+        discover:
+          filename: helmfile.yaml
+        generate:
+          command: helmfile
+          args:
+            - template
+            - --namespace $ARGOCD_APP_NAMESPACE
