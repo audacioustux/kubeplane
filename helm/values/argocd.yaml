@@ -18,7 +18,7 @@ configs:
             - --force
         discover:
           find:
-            command: [sh, -c, 'find . -type f -name "helmfile.yaml"']
+            glob: "**/helmfile.yaml"
         generate:
           command: [helmfile, --quiet]
           args:
