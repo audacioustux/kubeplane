@@ -12,4 +12,4 @@ data:
         solvers:
           - http01:
               ingress:
-                ingressClassName: {}
+                ingressClassName: ""
