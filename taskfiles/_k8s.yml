@@ -4,7 +4,7 @@ tasks:
   up:
     desc: Start local Kubernetes cluster
     cmds:
-      # - defer: minikube stop
+      - defer: minikube stop
       - >-
           minikube start
           --driver=docker

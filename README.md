@@ -13,13 +13,13 @@ KubePlane is a Continuous Software Delivery Platform, that aims to deal with day
 - Scalability: Multi-tenancy, Multi-cloud, Enterprise-grade
 - Complexity: No-Fork - on sholder of battle-tested tools
 - Reliability: Alerting, Rollback, Backup+Restore, Semantic Versioning
-- Developer Experience: GitOps, CI/CD, Self-Service, ChatOps
+- DevEx: GitOps, CI/CD, Self-Service
 
 ## Non-Goals
 
 - Re-inventing the wheel
-  - e.g. Rebuilding parts of GUI from scratch when existing tools already provide them.
+  - e.g. Rebuilding any UI from scratch when existing tools already provide them.
 
 ## Contact
 
-- [Mail](mailto:kubeplane+gh@audacioustux.com)
+Email us at [kubeplane+gh@audacioustux.com](mailto:kubeplane+gh@audacioustux.com)

@@ -1,0 +1,7 @@
+name: kubeplane-generic-helm
+appVersion: 0.1.0
+description: Chart to deploy any YAML file
+version: 0.1.0
+maintainers:
+- email: kubeplane@audacioustux.com
+  name: Tanjim H.

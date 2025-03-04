@@ -4,4 +4,5 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: check-yaml
+        exclude: ^(helm/charts/.*/templates/.*.yaml)
       - id: check-added-large-files
