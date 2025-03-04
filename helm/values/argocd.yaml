@@ -23,7 +23,14 @@ configs:
           command: [helmfile, --quiet]
           args:
             - template
-            - --include-crds
+global:
+  domain: cd.localhost.nip.io
+server:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: selfsigned
+    tls: true
 repoServer:
   extraContainers:
     - name: helmfile

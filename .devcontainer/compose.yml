@@ -10,14 +10,8 @@ services:
     security_opt:
       - seccomp:unconfined
     environment:
-      DOCKER_HOST: tcp://docker:2376
       DOCKER_TLS_VERIFY: 1
       DOCKER_CERT_PATH: /certs/client
-    depends_on:
-      docker:
-        condition: service_healthy
-    networks:
-      - devcontainer
 
   docker:
     image: docker:dind
@@ -33,17 +27,9 @@ services:
       - docker-storage:/var/lib/docker
     environment:
       DOCKER_TLS_CERTDIR: /certs
-    healthcheck:
-      test: [ "CMD", "docker", "info" ]
-      start_period: 60s
-    networks:
-      - devcontainer
+    network_mode: service:devbox
 
 volumes:
   docker-certs:
   docker-storage:
   nix-store:
-
-
-networks:
-  devcontainer:
