@@ -1,0 +1,10 @@
+ingressController:
+  enabled: true
+  loadbalancerMode: shared
+  default: true
+  enableProxyProtocol: true
+  service:
+    type: NodePort
+gatewayAPI:
+  enabled: true
+  enableProxyProtocol: true

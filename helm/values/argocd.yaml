@@ -1,10 +1,7 @@
-argo-cd:
-  dex:
-    enabled: false
-  notifications:
-    enabled: false
-  applicationSet:
-    enabled: false
+dex:
+  enabled: false
+notifications:
+  enabled: false
 configs:
   cmp:
     create: true

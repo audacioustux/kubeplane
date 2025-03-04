@@ -20,8 +20,10 @@ tasks:
     deps:
       - task: configure:pre-commit
       - task: configure:gh
+      - task: configure:helmfile
   configure:pre-commit: pre-commit install
   configure:gh: sudo ln -snf $(which gh) /usr/bin/gh
+  configure:helmfile: helmfile init --force
 
   update:
     desc: Update dependencies and build artifacts

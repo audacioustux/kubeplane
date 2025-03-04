@@ -1,6 +1,6 @@
 version: "3"
 
-dotenv: [".env.local", ".env"]
+dotenv: [".local.env", ".env"]
 
 includes:
   env:
@@ -12,5 +12,3 @@ tasks:
   default:
     desc: Show all available tasks
     cmd: task --list-all
-
-  echo: echo $a

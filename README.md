@@ -2,6 +2,8 @@
 
 KubePlane is a Continuous Software Delivery Platform, that aims to deal with day 0 challenges and ease the day 1 - N concerns.
 
+![KubePlane Logo](misc/kubeplane.svg)
+
 ## Goals
 
 - Efficiency: Binpacking, Scale to Zero, Spot instances, eBPF

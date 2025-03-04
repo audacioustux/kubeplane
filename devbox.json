@@ -4,6 +4,7 @@
     "oh-my-zsh": "latest",
     "zsh-autosuggestions": "latest",
     "zsh-syntax-highlighting": "latest",
+    "glibcLocales": "latest",
     "ripgrep": "latest",
     "cloc": "latest",
     "go-task": "latest",
@@ -26,7 +27,10 @@
     "docker-client": "latest",
     "gh": "latest",
     "pre-commit": "latest",
-    "deno": "latest"
+    "deno": "latest",
+    "helmfile": "latest",
+    "argocd": "latest",
+    "cilium-cli": "latest"
   },
   "env": {
     "PATH": "$HOME/bin:$HOME/.local/bin:$PATH"
