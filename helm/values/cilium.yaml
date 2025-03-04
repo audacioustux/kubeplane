@@ -3,10 +3,6 @@ ingressController:
   loadbalancerMode: shared
   default: true
   enableProxyProtocol: true
-  service:
-    type: NodePort
-    insecureNodePort: 30080
-    secureNodePort: 30443
 gatewayAPI:
   enabled: true
   enableProxyProtocol: true
