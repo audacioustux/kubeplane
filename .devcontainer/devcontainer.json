@@ -27,7 +27,8 @@
         "Gruntfuggly.todo-tree",
         "ms-azuretools.vscode-docker",
         "sleistner.vscode-fileutils",
-        "DavidAnson.vscode-markdownlint"
+        "DavidAnson.vscode-markdownlint",
+        "ms-kubernetes-tools.vscode-kubernetes-tools"
       ]
     }
   },
