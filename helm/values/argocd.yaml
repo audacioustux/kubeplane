@@ -23,6 +23,7 @@ configs:
           command: [helmfile, --quiet]
           args:
             - template
+            - --include-crds
 repoServer:
   extraContainers:
     - name: helmfile
