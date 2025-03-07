@@ -2,18 +2,17 @@
 
 KubePlane is a Continuous Software Delivery Platform, that aims to deal with day 0 challenges and ease the day 1 - N concerns.
 
-![KubePlane Logo](misc/kubeplane.svg)
+![KubePlane Logo](assets/kubeplane.svg)
 
 ## Goals
 
 - Efficiency: Binpacking, Scale to Zero, Spot instances, eBPF
 - Safety: Anamoly detection, Policy enforcement, Image scanning, Audit trail
 - Observability: Metrics, Logs, Tracing
-- Pluggability: Vendor agnostic, Configurable
 - Scalability: Multi-tenancy, Multi-cloud, Enterprise-grade
-- Complexity: No-Fork - on sholder of battle-tested tools
+- Complexity: No-Fork, No-Operator
 - Reliability: Alerting, Rollback, Backup+Restore, Semantic Versioning
-- DevEx: GitOps, CI/CD, Self-Service
+- DevEx: GitOps, CI/CD, Self-Service, Cloud-Agnostic
 
 ## Non-Goals
 

@@ -4,4 +4,4 @@ releases:
     chart: cilium/cilium
     version: ~1.17.0
     values:
-      - ./cilium.values.yaml
+      - ./kubeplane.values.yaml
