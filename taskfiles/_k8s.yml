@@ -4,7 +4,6 @@ tasks:
   up:
     desc: Start local Kubernetes cluster
     cmds:
-      - defer: minikube stop
       - >-
         minikube start
         --driver=docker
@@ -13,11 +12,5 @@ tasks:
         --interactive=false
         --cni=''
         --wait=all
-      - minikube tunnel --bind-address 0.0.0.0
-  down:
-    desc: Destroy local Kubernetes cluster
-    cmd: minikube delete
-
-  dashboard:
-    desc: Open Kubernetes dashboard
-    cmd: minikube dashboard
+  down: minikube stop
+  delete: minikube delete

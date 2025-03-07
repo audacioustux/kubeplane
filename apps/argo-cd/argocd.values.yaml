@@ -24,13 +24,14 @@ configs:
           args:
             - template
 global:
-  domain: cd.localhost.nip.io
+  domain: cd-127-0-0-1.nip.io
 server:
   ingress:
     enabled: true
     annotations:
       cert-manager.io/cluster-issuer: selfsigned
     tls: true
+    ingressClassName: cilium
 repoServer:
   extraContainers:
     - name: helmfile

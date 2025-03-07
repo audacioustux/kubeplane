@@ -1,0 +1,25 @@
+releases:
+  - name: cert-manager
+    namespace: cert-manager
+    chart: jetstack/cert-manager
+    version: ~v1.17.0
+    values:
+      - ./cert-manager.values.yaml
+  - name: selfsigned-ci
+    chart: ../../charts/generic
+    namespace: default
+    values:
+      - ./selfsigned-ci.values.yaml
+    needs:
+      - cert-manager/cert-manager
+  - name: letsencrypt-ci
+    chart: helm/charts/generic
+    namespace: default
+    values:
+      - ./letsencrypt-ci.values.yaml
+    needs:
+      - cert-manager/cert-manager
+
+repositories:
+  - name: jetstack
+    url: https://charts.jetstack.io

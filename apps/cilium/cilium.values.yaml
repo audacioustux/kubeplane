@@ -13,3 +13,4 @@ hubble:
     enabled: true
   ui:
     enabled: true
+

@@ -5,7 +5,7 @@ data:
       name: letsencrypt-prod
     spec:
       acme:
-        email: "tanjim@audacioustux.com"
+        email: "kubeplane+cert@audacioustux.com"
         server: https://acme-v02.api.letsencrypt.org/directory
         privateKeySecretRef:
           name: letsencrypt-prod
@@ -16,6 +16,14 @@ data:
   - apiVersion: cert-manager.io/v1
     kind: ClusterIssuer
     metadata:
-      name: selfsigned
+      name: letsencrypt-stage
     spec:
-      selfSigned: {}
+      acme:
+        email: "kubeplane+cert@audacioustux.com"
+        server: https://acme-staging-v02.api.letsencrypt.org/directory
+        privateKeySecretRef:
+          name: letsencrypt-stage
+        solvers:
+          - http01:
+              ingress:
+                ingressClassName: cilium
