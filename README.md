@@ -1,5 +1,7 @@
 # KubePlane (KP)
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/kubeplane)](https://artifacthub.io/packages/search?repo=kubeplane)
+
 KubePlane is a Continuous Software Delivery Platform, that aims to deal with day 0 challenges and ease the day 1 - N concerns.
 
 ![KubePlane Logo](assets/kubeplane.svg)
