@@ -23,11 +23,9 @@ jobs:
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Update chart dependencies
+      - name: Add Helm dependencies
         run: |
-          for dir in $(ls -d charts/*/); do
-            helm dependency update $dir
-          done
+          helm repo add argo https://argoproj.github.io/argo-helm
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.7.0
