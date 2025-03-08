@@ -24,4 +24,28 @@ entries:
     urls:
     - https://github.com/audacioustux/kubeplane/releases/download/generic-helm-0.2.2/generic-helm-0.2.2.tgz
     version: 0.2.2
-generated: "2025-03-08T12:41:44.104702947Z"
+  platform:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-03-08T15:46:37.329316196Z"
+    dependencies:
+    - condition: argo-cd.enabled
+      name: argo-cd
+      repository: https://argoproj.github.io/argo-helm
+      version: ~7.8.0
+    - alias: kubeplane
+      condition: kubeplane.enabled
+      name: generic-helm
+      repository: file://../generic-helm
+      version: ~0.2.0
+    description: Chart to deploy KubePlane platform
+    digest: fc9643d5eb8bcb4dfc3bbf5c8c93d5eed3e534a7cdd9035fdb7e10a16579ae3c
+    icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
+    maintainers:
+    - email: kubeplane@audacioustux.com
+      name: Tanjim H.
+    name: platform
+    urls:
+    - https://github.com/audacioustux/kubeplane/releases/download/platform-0.1.1/platform-0.1.1.tgz
+    version: 0.1.1
+generated: "2025-03-08T15:46:37.329334791Z"
