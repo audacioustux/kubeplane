@@ -18,7 +18,7 @@
   <polygon points="150,75 170,140 150,125 130,140" fill="black"/>
 
   <!-- Project name in modern sans-serif typography -->
-  <text x="150" y="290" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">
+  <text x="150" y="290" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold" stroke="black" stroke-width="1">
     KubePlane
   </text>
 </svg>
