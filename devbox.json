@@ -32,7 +32,8 @@
     "cilium-cli":              "latest",
     "dig":                     "latest",
     "hubble":                  "latest",
-    "vim":                     "latest"
+    "vim":                     "latest",
+    "tanka":                   "latest"
   },
   "env": {
     "PATH": "$HOME/bin:$HOME/.local/bin:$PATH"

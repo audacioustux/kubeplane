@@ -1,5 +1,5 @@
 argo-cd:
-  enabled: false
+  enabled: true
 
   configs:
     params:
@@ -25,7 +25,7 @@ argo-cd:
   repoServer:
     extraContainers:
       - name: helmfile
-        image: ghcr.io/helmfile/helmfile:v0.171.0
+        image: ghcr.io/helmfile/helmfile:{{.Values.configs.cmp.plugins.helmfile.version}}
         command: ["/var/run/argocd/argocd-cmp-server"]
         env:
           - name: HELM_CACHE_HOME
@@ -77,7 +77,7 @@ kubeplane:
           - group: "*"
             kind: "*"
         destinations:
-          - namespace: "kp-*"
+          - namespace: "{{.Release.Namespace}}-*"
             server: "*"
         sourceRepos:
           - &repo https://github.com/audacioustux/kubeplane.git
@@ -108,7 +108,7 @@ kubeplane:
               path: "{{.path.path}}"
             destination:
               server: https://kubernetes.default.svc
-              namespace: "kp-{{.path.basename}}"
+              namespace: "{{.Release.Namespace}}-{{.path.basename}}"
             syncPolicy:
               syncOptions:
                 - CreateNamespace=true

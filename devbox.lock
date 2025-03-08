@@ -1665,6 +1665,54 @@
         }
       }
     },
+    "tanka@latest": {
+      "last_modified": "2025-02-07T11:26:36Z",
+      "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#tanka",
+      "source": "devbox-search",
+      "version": "0.31.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rkgq8i3wicvfzp3llcqr44kk40hdpbm6-tanka-0.31.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rkgq8i3wicvfzp3llcqr44kk40hdpbm6-tanka-0.31.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xs57bgcjmn44scrb2xsy3r0y036gzsll-tanka-0.31.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xs57bgcjmn44scrb2xsy3r0y036gzsll-tanka-0.31.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wg8mn4rxq5g3l2s8jvknrf8ib9aq837i-tanka-0.31.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wg8mn4rxq5g3l2s8jvknrf8ib9aq837i-tanka-0.31.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bxlb1lk645b8byqzbmz7b7rfd3iwd4sh-tanka-0.31.2",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/bxlb1lk645b8byqzbmz7b7rfd3iwd4sh-tanka-0.31.2"
+        }
+      }
+    },
     "unzip@latest": {
       "last_modified": "2025-02-07T11:26:36Z",
       "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#unzip",
