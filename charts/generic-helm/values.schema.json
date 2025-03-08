@@ -38,5 +38,5 @@
             "default": []
         }
     },
-    "additionalProperties": false
+    "additionalProperties": true
 }

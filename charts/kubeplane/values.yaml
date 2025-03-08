@@ -1,5 +1,66 @@
 argo-cd:
   enabled: false
+  configs:
+    params:
+      server:
+        insecure: true
+    cmp:
+      create: true
+      plugins:
+        helmfile:
+          version: v0.171.0
+          init:
+            command: [helmfile, --quiet]
+            args:
+              - init
+              - --force
+          discover:
+            find:
+              glob: "**/helmfile.yaml"
+          generate:
+            command: [helmfile, --quiet]
+            args:
+              - template
+  repoServer:
+    extraContainers:
+      - name: helmfile
+        image: ghcr.io/helmfile/helmfile:v0.171.0
+        command: ["/var/run/argocd/argocd-cmp-server"]
+        env:
+          - name: HELM_CACHE_HOME
+            value: /tmp/helm/cache
+          - name: HELM_CONFIG_HOME
+            value: /tmp/helm/config
+          - name: HELMFILE_CACHE_HOME
+            value: /tmp/helmfile/cache
+          - name: HELMFILE_TEMPDIR
+            value: /tmp/helmfile/tmp
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 999
+        volumeMounts:
+          - mountPath: /var/run/argocd
+            name: var-files
+          - mountPath: /home/argocd/cmp-server/plugins
+            name: plugins
+          - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+            subPath: helmfile.yaml
+            name: argocd-cmp-cm
+          - mountPath: /tmp
+            name: helmfile-tmp
+    volumes:
+      - name: argocd-cmp-cm
+        configMap:
+          name: argocd-cmp-cm
+      - name: helmfile-tmp
+        emptyDir: {}
+  server:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: selfsigned
+      tls: true
+      ingressClassName: cilium
+
 kubeplane:
-  repoURL: https://github.com/audacioustux/kubeplane.git
-  targetRevision: HEAD
+  enabled: true

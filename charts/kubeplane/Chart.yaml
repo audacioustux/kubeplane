@@ -1,14 +1,19 @@
 apiVersion: v2
 name: platform
-appVersion: 0.1.0
+appVersion: "0.1.0"
 description: Chart to deploy KubePlane platform
+icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
 version: 0.1.0
 maintainers:
   - email: kubeplane@audacioustux.com
     name: Tanjim H.
 dependencies:
   - name: argo-cd
-    alias: argocd
     version: ~7.8.0
     repository: https://argoproj.github.io/argo-helm
     condition: argo-cd.enabled
+  - name: generic-helm
+    alias: kubeplane
+    version: ~0.2.0
+    repository: https://audacioustux.github.io/kubeplane
+    condition: kubeplane.enabled
