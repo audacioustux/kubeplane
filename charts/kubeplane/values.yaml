@@ -1,5 +1,6 @@
 argo-cd:
   enabled: false
+
   configs:
     params:
       server:
@@ -64,34 +65,33 @@ argo-cd:
 
 kubeplane:
   enabled: true
+
   manifests:
     appproject:
       apiVersion: argoproj.io/v1alpha1
       kind: AppProject
       metadata:
         name: &project kubeplane
-        namespace: argocd
       spec:
         clusterResourceWhitelist:
           - group: "*"
             kind: "*"
         destinations:
-          - namespace: "*"
+          - namespace: "kp-*"
             server: "*"
         sourceRepos:
-          - "*"
+          - &repo https://github.com/audacioustux/kubeplane.git
     applicationset:
       apiVersion: argoproj.io/v1alpha1
       kind: ApplicationSet
       metadata:
         name: *project
-        namespace: argocd
       spec:
         goTemplate: true
         goTemplateOptions: ["missingkey=error"]
         generators:
           - git:
-              repoURL: &repo https://github.com/audacioustux/kubeplane.git
+              repoURL: *repo
               revision: &revision HEAD
               directories:
                 - path: apps/*
@@ -108,7 +108,7 @@ kubeplane:
               path: "{{.path.path}}"
             destination:
               server: https://kubernetes.default.svc
-              namespace: "{{.path.basename}}"
+              namespace: "kp-{{.path.basename}}"
             syncPolicy:
               syncOptions:
                 - CreateNamespace=true

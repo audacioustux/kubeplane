@@ -3,7 +3,7 @@ name: platform
 appVersion: "0.1.0"
 description: Chart to deploy KubePlane platform
 icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
-version: 0.1.0
+version: 0.1.1
 maintainers:
   - email: kubeplane@audacioustux.com
     name: Tanjim H.
