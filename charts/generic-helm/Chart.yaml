@@ -1,7 +1,7 @@
 apiVersion: v2
 name: generic-helm
 description: Chart to deploy any YAML file
-version: 0.2.1
+version: 0.2.2
 maintainers:
   - email: kubeplane+charts@audacioustux.com
     name: Tanjim H.
