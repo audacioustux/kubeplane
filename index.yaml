@@ -2,6 +2,17 @@ apiVersion: v1
 entries:
   generic-helm:
   - apiVersion: v2
+    created: "2025-03-08T11:20:26.908385305Z"
+    description: Chart to deploy any YAML file
+    digest: 72b73a08bf4d944d427721c612f3d7504ea2854ac1d359a1ec3fe13b3c31c592
+    maintainers:
+    - email: kubeplane+charts@audacioustux.com
+      name: Tanjim H.
+    name: generic-helm
+    urls:
+    - https://github.com/audacioustux/kubeplane/releases/download/generic-helm-0.2.1/generic-helm-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     created: "2025-03-08T11:06:37.054976845Z"
     description: Chart to deploy any YAML file
     digest: ba8ffef32eb4539860ebda9520164417880a7b047af2a812dd958fd90229db64
@@ -31,4 +42,4 @@ entries:
     urls:
     - https://github.com/audacioustux/kubeplane/releases/download/platform-0.1.0/platform-0.1.0.tgz
     version: 0.1.0
-generated: "2025-03-08T11:06:37.252892044Z"
+generated: "2025-03-08T11:20:26.90839855Z"
