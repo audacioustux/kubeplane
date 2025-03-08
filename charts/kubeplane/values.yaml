@@ -1,0 +1,5 @@
+argo-cd:
+  enabled: false
+kubeplane:
+  repoURL: https://github.com/audacioustux/kubeplane.git
+  targetRevision: HEAD

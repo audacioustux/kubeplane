@@ -19,7 +19,11 @@
         "devbox.autoShellOnTerminal": false,
         "files.associations": {
           "devbox.json": "jsonc"
-        }
+        },
+        "material-icon-theme.languages.associations": {
+          "helm": "yaml"
+        },
+        "workbench.iconTheme": "material-icon-theme"
       },
       "extensions": [
         "jetpack-io.devbox",
@@ -28,7 +32,8 @@
         "ms-azuretools.vscode-docker",
         "sleistner.vscode-fileutils",
         "DavidAnson.vscode-markdownlint",
-        "ms-kubernetes-tools.vscode-kubernetes-tools"
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "PKief.material-icon-theme"
       ]
     }
   },

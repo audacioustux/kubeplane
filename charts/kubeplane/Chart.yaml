@@ -1,0 +1,14 @@
+apiVersion: v2
+name: platform
+appVersion: 0.1.0
+description: Chart to deploy KubePlane platform
+version: 0.1.0
+maintainers:
+  - email: kubeplane@audacioustux.com
+    name: Tanjim H.
+dependencies:
+  - name: argo-cd
+    alias: argocd
+    version: ~7.8.0
+    repository: https://argoproj.github.io/argo-helm
+    condition: argo-cd.enabled

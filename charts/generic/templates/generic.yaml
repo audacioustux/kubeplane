@@ -1,4 +1,41 @@
-{{- range .Values.data }}
+{{- /*
+This template processes two collections defined by the user:
+
+1. A flat map of manifests (.Values.manifests):
+   - Each key uniquely identifies a manifest.
+   - If metadata.name is not set in the override, the key is used as the resource name.
+   - Defaults are merged in based on the resource kind, allowing extendable defaults.
+
+2. A list of manifests (.Values.manifestList):
+   - If metadata.name is not set, a generated name is assigned using the list index.
+   - Defaults are merged in based on the resource kind.
+
+If the user does not define any manifests, nothing is rendered.
+*/ -}}
+
+{{- /* Process the flat map manifests */ -}}
+{{- range $key, $manifest := .Values.manifests }}
+  {{- $kind := $manifest.kind | default "" }}
+  {{- $default := index $.Values.manifestDefaults $kind | default dict }}
+  {{- $merged := merge $default $manifest }}
+  {{- /* If metadata.name is missing, set it to the map key */ -}}
+  {{- if not (and $merged.metadata (index $merged.metadata "name")) }}
+    {{- $_ := set $merged "metadata" (merge (default dict $merged.metadata) (dict "name" $key)) }}
+  {{- end }}
+{{ toYaml $merged | nindent 0 }}
 ---
-{{ toYaml . }}
-{{- end -}}
+{{- end }}
+
+{{- /* Process the list manifests */ -}}
+{{- range $index, $manifest := .Values.manifestList }}
+  {{- $kind := $manifest.kind | default "" }}
+  {{- $default := index $.Values.manifestDefaults $kind | default dict }}
+  {{- $merged := merge $default $manifest }}
+  {{- /* If metadata.name is missing, generate one using the list index */ -}}
+  {{- if not (and $merged.metadata (index $merged.metadata "name")) }}
+    {{- $genName := printf "manifest-%d" $index }}
+    {{- $_ := set $merged "metadata" (merge (default dict $merged.metadata) (dict "name" $genName)) }}
+  {{- end }}
+{{ toYaml $merged | nindent 0 }}
+---
+{{- end }}

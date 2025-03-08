@@ -1,7 +1,7 @@
 releases:
-  - name: cilium
-    namespace: kube-system
-    chart: cilium/cilium
+  - name: kubeplane
+    namespace: kubeplane
+    chart: kubeplane/generic-helm
     version: ~1.17.0
     values:
       - ./kubeplane.values.yaml

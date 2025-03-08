@@ -1,1 +1,90 @@
-data: []
+# -------------------------------------------------------------------
+# manifestDefaults:
+# This section defines default values for Kubernetes resource kinds.
+#
+# Users can extend or override these defaults to include any arbitrary kind.
+# For example, if you want to add defaults for ConfigMap or Secret, simply add:
+#
+# ConfigMap:
+#   apiVersion: v1
+#   kind: ConfigMap
+#   metadata:
+#     labels: {}
+#   data: {}
+#
+# The built-in defaults below provide examples for Deployment and Service.
+# These defaults are merged with user-specified manifests (if provided).
+# -------------------------------------------------------------------
+manifestDefaults:
+  Deployment:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata: {}
+    spec: {}
+  Service:
+    apiVersion: v1
+    kind: Service
+    metadata: {}
+    spec: {}
+
+# -------------------------------------------------------------------
+# manifests:
+# A flat map of manifests where each key uniquely identifies a manifest.
+#
+# Users can add their own manifests by defining key/value pairs.
+# The key is automatically used as the resource name if metadata.name is not provided.
+#
+# Example:
+#
+# my-deployment-1:
+#   kind: Deployment
+#   metadata:
+#     labels:
+#       app: my-app
+#   spec:
+#     replicas: 2
+#     selector:
+#       matchLabels:
+#         app: my-app
+#     template:
+#       metadata:
+#         labels:
+#           app: my-app
+#       spec:
+#         containers:
+#           - name: my-container
+#             image: nginx
+#
+# -------------------------------------------------------------------
+manifests: {}
+
+# -------------------------------------------------------------------
+# manifestList:
+# A list of manifests.
+#
+# Users can add manifests to this list. If metadata.name is not provided,
+# a generated name (manifest-<index>) will be assigned.
+#
+# Example:
+#
+# - kind: Deployment
+#   metadata:
+#     name: list-deployment
+#     labels:
+#       app: list-app
+#   spec:
+#     replicas: 1
+#     selector:
+#       matchLabels:
+#         app: list-app
+#     template:
+#       metadata:
+#         labels:
+#           app: list-app
+#       spec:
+#         containers:
+#           - name: list-container
+#             image: redis
+#
+# -------------------------------------------------------------------
+manifestList: []

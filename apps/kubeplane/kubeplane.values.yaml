@@ -1,8 +1,22 @@
-data:
+list:
+  - apiVersion: argoproj.io/v1alpha1
+    kind: AppProject
+    metadata:
+      name: kubeplane
+      namespace: argocd
+    spec:
+      clusterResourceWhitelist:
+        - group: "*"
+          kind: "*"
+      destinations:
+        - namespace: "*"
+          server: "*"
+      sourceRepos:
+        - "*"
   - apiVersion: argoproj.io/v1alpha1
     kind: ApplicationSet
     metadata:
-      name: cluster-addons
+      name: kubeplane
       namespace: argocd
     spec:
       goTemplate: true
