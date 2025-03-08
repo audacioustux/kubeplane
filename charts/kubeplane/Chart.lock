@@ -6,4 +6,4 @@ dependencies:
   repository: file://../generic-helm
   version: 0.2.4
 digest: sha256:abaa42dc166cd509bc8b968fcafab574ce9c0ae24425f121b7d9d3fbe3fc57ea
-generated: "2025-03-08T14:21:36.111021655Z"
+generated: "2025-03-08T14:43:45.329991639Z"
