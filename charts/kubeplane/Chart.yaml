@@ -15,5 +15,5 @@ dependencies:
   - name: generic-helm
     alias: kubeplane
     version: ~0.2.0
-    repository: https://audacioustux.github.io/kubeplane
+    repository: "file://../generic-helm"
     condition: kubeplane.enabled
