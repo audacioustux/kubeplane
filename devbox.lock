@@ -888,54 +888,6 @@
         }
       }
     },
-    "helmfile@latest": {
-      "last_modified": "2025-02-16T00:50:12Z",
-      "resolved": "github:NixOS/nixpkgs/1dcdd535fef84d4671129a10e7072d56dca9a4d3#helmfile",
-      "source": "devbox-search",
-      "version": "0.171.0",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/drhfi74ls1r2fm3p1kfkkigg1wjb0lpm-helmfile-0.171.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/drhfi74ls1r2fm3p1kfkkigg1wjb0lpm-helmfile-0.171.0"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/b17835b1gyv4vpbcw1v43j30miy6allp-helmfile-0.171.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/b17835b1gyv4vpbcw1v43j30miy6allp-helmfile-0.171.0"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/fdn1y3dwv7crd3809lnr4b690d2qkclk-helmfile-0.171.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/fdn1y3dwv7crd3809lnr4b690d2qkclk-helmfile-0.171.0"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/cv8jn63i3gdp34i7lzbimdc3lw1v3dfz-helmfile-0.171.0",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/cv8jn63i3gdp34i7lzbimdc3lw1v3dfz-helmfile-0.171.0"
-        }
-      }
-    },
     "httpie@latest": {
       "last_modified": "2025-02-23T09:42:26Z",
       "resolved": "github:NixOS/nixpkgs/2d068ae5c6516b2d04562de50a58c682540de9bf#httpie",
@@ -1553,6 +1505,90 @@
         }
       }
     },
+    "pkg-config@latest": {
+      "last_modified": "2025-02-07T11:26:36Z",
+      "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#pkg-config",
+      "source": "devbox-search",
+      "version": "0.29.2",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/iypcgg2n0fgqlnm2v9j4j7p5nsfynyhd-pkg-config-wrapper-0.29.2",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/fziphl0a64sxri96jdazm3ajqys8vjfp-pkg-config-wrapper-0.29.2-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/l3jbyzlhs9n9xk9s17bzcw5sfk8fp383-pkg-config-wrapper-0.29.2-doc"
+            }
+          ],
+          "store_path": "/nix/store/iypcgg2n0fgqlnm2v9j4j7p5nsfynyhd-pkg-config-wrapper-0.29.2"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/r64x2sykb0nbk875808l6xxyy1f234j4-pkg-config-wrapper-0.29.2",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/7j9vkdkyv5764hwrcxqic1q3qxfnzyhq-pkg-config-wrapper-0.29.2-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/33z266ydfzjih1xn38yd72x35dwa4d4f-pkg-config-wrapper-0.29.2-doc"
+            }
+          ],
+          "store_path": "/nix/store/r64x2sykb0nbk875808l6xxyy1f234j4-pkg-config-wrapper-0.29.2"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nwd9bgqpn86z28kl46q0hy0k8n0wmfza-pkg-config-wrapper-0.29.2",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/jwyhiq9b8azcw4bvhf9ndm1i0wln873n-pkg-config-wrapper-0.29.2-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/hjjcbav5yd94k6m9m53y3q9afzbxaggy-pkg-config-wrapper-0.29.2-doc"
+            }
+          ],
+          "store_path": "/nix/store/nwd9bgqpn86z28kl46q0hy0k8n0wmfza-pkg-config-wrapper-0.29.2"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/zbpskag55c4qvpzjvwrlxqs40lj65mwn-pkg-config-wrapper-0.29.2",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/6fnns8npgj57hfshpcshirwq1vxdpmwh-pkg-config-wrapper-0.29.2-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/zp2xwxgkwb42nbymnxz6skgdr2f7x14m-pkg-config-wrapper-0.29.2-doc"
+            }
+          ],
+          "store_path": "/nix/store/zbpskag55c4qvpzjvwrlxqs40lj65mwn-pkg-config-wrapper-0.29.2"
+        }
+      }
+    },
     "pre-commit@latest": {
       "last_modified": "2025-02-24T11:23:12Z",
       "resolved": "github:NixOS/nixpkgs/d9b69c3ec2a2e2e971c534065bdd53374bd68b97#pre-commit",
@@ -1665,51 +1701,52 @@
         }
       }
     },
-    "tanka@latest": {
+    "rustup@latest": {
       "last_modified": "2025-02-07T11:26:36Z",
-      "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#tanka",
+      "plugin_version": "0.0.1",
+      "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#rustup",
       "source": "devbox-search",
-      "version": "0.31.2",
+      "version": "1.27.1",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/rkgq8i3wicvfzp3llcqr44kk40hdpbm6-tanka-0.31.2",
+              "path": "/nix/store/9b8v9lji5gjw5cj7f2nv3l184zyg0m3a-rustup-1.27.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/rkgq8i3wicvfzp3llcqr44kk40hdpbm6-tanka-0.31.2"
+          "store_path": "/nix/store/9b8v9lji5gjw5cj7f2nv3l184zyg0m3a-rustup-1.27.1"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/xs57bgcjmn44scrb2xsy3r0y036gzsll-tanka-0.31.2",
+              "path": "/nix/store/d2g7zcymlvc5cjqcdpbqgrzzg2swwzik-rustup-1.27.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/xs57bgcjmn44scrb2xsy3r0y036gzsll-tanka-0.31.2"
+          "store_path": "/nix/store/d2g7zcymlvc5cjqcdpbqgrzzg2swwzik-rustup-1.27.1"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/wg8mn4rxq5g3l2s8jvknrf8ib9aq837i-tanka-0.31.2",
+              "path": "/nix/store/sfmv13w9bqvnx03xshiwx387zwffh2iq-rustup-1.27.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/wg8mn4rxq5g3l2s8jvknrf8ib9aq837i-tanka-0.31.2"
+          "store_path": "/nix/store/sfmv13w9bqvnx03xshiwx387zwffh2iq-rustup-1.27.1"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/bxlb1lk645b8byqzbmz7b7rfd3iwd4sh-tanka-0.31.2",
+              "path": "/nix/store/dqz7ghl1i46i8nswvkkl3h3jbhxkbchg-rustup-1.27.1",
               "default": true
             }
           ],
-          "store_path": "/nix/store/bxlb1lk645b8byqzbmz7b7rfd3iwd4sh-tanka-0.31.2"
+          "store_path": "/nix/store/dqz7ghl1i46i8nswvkkl3h3jbhxkbchg-rustup-1.27.1"
         }
       }
     },

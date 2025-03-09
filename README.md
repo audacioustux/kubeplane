@@ -12,7 +12,6 @@ KubePlane is a Continuous Software Delivery Platform, that aims to deal with day
 - Safety: Anamoly detection, Policy enforcement, Image scanning, Audit trail
 - Observability: Metrics, Logs, Tracing
 - Scalability: Multi-tenancy, Multi-cloud, Enterprise-grade
-- Complexity: No-Fork, No-Operator
 - Reliability: Alerting, Rollback, Backup+Restore, Semantic Versioning
 - DevEx: GitOps, CI/CD, Self-Service, Cloud-Agnostic
 

@@ -1,0 +1,8 @@
+version: "3"
+
+tasks:
+  cargo:*:
+    desc: Run the given cargo command
+    vars:
+      COMMAND: "{{index .MATCH 0}}"
+    cmd: cargo {{.COMMAND}}

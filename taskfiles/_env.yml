@@ -11,9 +11,13 @@ tasks:
 
   install:_:
     deps:
+      - task: install:cargo
+  install:cargo: rustup update
 
   install:_:pkgs:
     deps:
+      - task: install:cargo:pkgs
+  install:cargo:pkgs: cargo install cargo-watch
 
   configure:_:
     desc: Configure development tools
@@ -23,9 +27,9 @@ tasks:
       - task: configure:helmfile
   configure:pre-commit: pre-commit install --allow-missing-config
   configure:gh: sudo ln -snf $(which gh) /usr/bin/gh
-  configure:helmfile: helmfile init --force
 
   update:
     desc: Update dependencies and build artifacts
     ignore_error: true
     cmds:
+      - task: :cargo:build

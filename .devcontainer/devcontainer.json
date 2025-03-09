@@ -33,7 +33,10 @@
         "sleistner.vscode-fileutils",
         "DavidAnson.vscode-markdownlint",
         "ms-kubernetes-tools.vscode-kubernetes-tools",
-        "PKief.material-icon-theme"
+        "PKief.material-icon-theme",
+        "tamasfe.even-better-toml",
+        "rust-lang.rust-analyzer",
+        "fill-labs.dependi"
       ]
     }
   },
