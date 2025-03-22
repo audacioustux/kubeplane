@@ -1,9 +1,0 @@
-dependencies:
-- name: argo-cd
-  repository: https://argoproj.github.io/argo-helm
-  version: 7.8.9
-- name: generic-helm
-  repository: file://../generic-helm
-  version: 0.2.4
-digest: sha256:abaa42dc166cd509bc8b968fcafab574ce9c0ae24425f121b7d9d3fbe3fc57ea
-generated: "2025-03-08T14:43:45.329991639Z"

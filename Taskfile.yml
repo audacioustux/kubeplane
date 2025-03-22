@@ -7,6 +7,9 @@ includes:
     taskfile: taskfiles/_env.yml
   k8s:
     taskfile: taskfiles/_k8s.yml
+  rust:
+    taskfile: taskfiles/_rust.yml
+    flatten: true
 
 tasks:
   default:
