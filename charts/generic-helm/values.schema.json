@@ -3,19 +3,6 @@
     "title": "Values schema for generic-chart",
     "type": "object",
     "properties": {
-        "manifestDefaults": {
-            "type": "object",
-            "description": "Default values for Kubernetes resource kinds. Extend this section to include defaults for any arbitrary kind (e.g., Deployment, Service, ConfigMap, etc.).",
-            "patternProperties": {
-                "^[a-zA-Z0-9-_]+$": {
-                    "type": "object",
-                    "description": "Defaults for a specific Kubernetes resource kind.",
-                    "default": {}
-                }
-            },
-            "additionalProperties": true,
-            "default": {}
-        },
         "manifests": {
             "type": "object",
             "description": "A flat map of manifests keyed by a unique identifier. The key is used as the resource name if metadata.name is not provided. Users should define only the manifests they wish to deploy.",

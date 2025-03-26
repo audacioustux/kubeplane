@@ -1,41 +1,42 @@
 {{- /*
-This template processes two collections defined by the user:
-
-1. A flat map of manifests (.Values.manifests):
-   - Each key uniquely identifies a manifest.
-   - If metadata.name is not set in the override, the key is used as the resource name.
-   - Defaults are merged in based on the resource kind, allowing extendable defaults.
-
-2. A list of manifests (.Values.manifestList):
-   - If metadata.name is not set, a generated name is assigned using the list index.
-   - Defaults are merged in based on the resource kind.
-
-If the user does not define any manifests, nothing is rendered.
+This template iterates over two value sets:
+1. .Values.map (a flat map): For each key/value pair, if metadata.name is not provided, the key is used.
+2. .Values.list (a list): For each manifest, if metadata.name is not provided, a generated name of the form:
+   {RELEASE-NAME}-{sha1sum({manifest})} is used.
 */ -}}
 
-{{- /* Process the flat map manifests */ -}}
-{{- range $key, $manifest := .Values.manifests }}
-  {{- $kind := $manifest.kind | default "" }}
-  {{- $default := index $.Values.manifestDefaults $kind | default dict }}
-  {{- $merged := merge $default $manifest }}
-  {{- /* If metadata.name is missing, set it to the map key */ -}}
-  {{- if not (and $merged.metadata (index $merged.metadata "name")) }}
-    {{- $_ := set $merged "metadata" (merge (default dict $merged.metadata) (dict "name" $key)) }}
+{{- /* Get the release name */ -}}
+{{- $releaseName := .Release.Name }}
+
+{{- /* Generate manifests from the flat map in .Values.map */ -}}
+{{- range $key, $manifest := .Values.map }}
+  {{- /*
+      Create a metadata block.
+      If $manifest.metadata exists, merge it with a default name using the key.
+  */ -}}
+  {{- $metadata := dict "name" $key }}
+  {{- if $manifest.metadata }}
+    {{- /* If a name is already provided, keep it; otherwise, use the key */ -}}
+    {{- $metadata = merge $manifest.metadata (dict "name" ($manifest.metadata.name | default $key)) }}
   {{- end }}
-{{ toYaml $merged | nindent 0 }}
+  {{- $finalManifest := merge $manifest (dict "metadata" $metadata) }}
+{{ toYaml $finalManifest }}
 ---
 {{- end }}
 
-{{- /* Process the list manifests */ -}}
-{{- range $index, $manifest := .Values.manifestList }}
-  {{- $kind := $manifest.kind | default "" }}
-  {{- $default := index $.Values.manifestDefaults $kind | default dict }}
-  {{- $merged := merge $default $manifest }}
-  {{- /* If metadata.name is missing, generate one using the list index */ -}}
-  {{- if not (and $merged.metadata (index $merged.metadata "name")) }}
-    {{- $genName := printf "manifest-%d" $index }}
-    {{- $_ := set $merged "metadata" (merge (default dict $merged.metadata) (dict "name" $genName)) }}
+{{- /* Generate manifests from the list in .Values.list */ -}}
+{{- range $index, $manifest := .Values.list }}
+  {{- /*
+      For each manifest, if metadata.name is not provided, generate a name.
+      The generated name follows the pattern: {RELEASE-NAME}-{sha1sum({manifest})}
+  */ -}}
+  {{- $manifestStr := printf "%s" (toJson $manifest) }}
+  {{- $defaultName := printf "%s-%s" (trunc 24 $releaseName) (sha1sum $manifestStr | trunc 10) }}
+  {{- $metadata := dict "name" $defaultName }}
+  {{- if $manifest.metadata }}
+    {{- $metadata = merge $manifest.metadata (dict "name" ($manifest.metadata.name | default $defaultName)) }}
   {{- end }}
-{{ toYaml $merged | nindent 0 }}
+  {{- $finalManifest := merge $manifest (dict "metadata" $metadata) }}
+{{ toYaml $finalManifest }}
 ---
 {{- end }}
