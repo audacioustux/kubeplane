@@ -3,7 +3,7 @@
     "title": "Values schema for generic-chart",
     "type": "object",
     "properties": {
-        "manifests": {
+        "map": {
             "type": "object",
             "description": "A flat map of manifests keyed by a unique identifier. The key is used as the resource name if metadata.name is not provided. Users should define only the manifests they wish to deploy.",
             "patternProperties": {
@@ -15,7 +15,7 @@
             "additionalProperties": false,
             "default": {}
         },
-        "manifestList": {
+        "list": {
             "type": "array",
             "description": "A list of manifests. If metadata.name is not provided, a generated name (e.g. manifest-0, manifest-1, etc.) will be assigned.",
             "items": {
