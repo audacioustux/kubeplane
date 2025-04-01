@@ -4,11 +4,6 @@ services:
     volumes:
       - ../..:/workspaces:cached,rw
       - docker-certs:/certs:ro
-      - nix-store:/nix/store
-    cap_add:
-      - SYS_PTRACE
-    security_opt:
-      - seccomp:unconfined
     environment:
       DOCKER_TLS_VERIFY: 1
       DOCKER_CERT_PATH: /certs/client
@@ -32,4 +27,3 @@ services:
 volumes:
   docker-certs:
   docker-storage:
-  nix-store:

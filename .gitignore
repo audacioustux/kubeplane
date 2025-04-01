@@ -3,5 +3,3 @@
 /.devbox
 
 /target
-
-**/charts/*.tgz

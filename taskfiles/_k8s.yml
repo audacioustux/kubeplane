@@ -10,7 +10,10 @@ tasks:
         --memory=no-limit
         --cpus=no-limit
         --interactive=false
-        --cni=''
+        --cni=cilium
+        --feature-gates=InPlacePodVerticalScaling=true
+        --addons=metrics-server
+        --nodes 2
         --wait=all
   down: minikube stop
   delete: minikube delete

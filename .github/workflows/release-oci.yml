@@ -1,0 +1,61 @@
+name: Release OCI
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "30 0 * * 1,3,5" # At 00:30 UTC on Monday, Wednesday, and Friday
+
+jobs:
+  build-linux-main:
+    runs-on: ${{ matrix.os || 'ubuntu-latest' }}
+    if: ${{ github.event_name == 'push' && github.ref_name == 'main' || github.event_name == 'schedule' }} # only run on push to main or on schedule
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        mode:
+          - dev
+          - release
+        target:
+          - x86_64-unknown-linux-gnu
+          - aarch64-unknown-linux-gnu
+        include:
+          - target: x86_64-unknown-linux-gnu
+            arch: amd64
+            run_tests: YES
+          - target: aarch64-unknown-linux-gnu
+            arch: arm64
+            os: ubuntu-24.04-arm
+            run_tests: YES
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          platform: linux/${{ matrix.arch }}
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ matrix.mode }}
+            ghcr.io/${{ github.repository }}:${{ matrix.mode }}-${{ matrix.arch }}
+          build-args: |
+            TARGET=${{ matrix.target }}
+            MODE=${{ matrix.mode }}
+            RUN_TESTS=${{ matrix.run_tests }}
