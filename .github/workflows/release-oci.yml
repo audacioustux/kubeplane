@@ -17,6 +17,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+      packages: write
     strategy:
       fail-fast: false
       matrix:
@@ -47,8 +48,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          target: runtime
           push: true
-          platform: linux/${{ matrix.arch }}
+          platforms: linux/${{ matrix.arch }}
           tags: |
             ghcr.io/${{ github.repository }}:${{ github.sha }}
             ghcr.io/${{ github.repository }}:${{ github.ref_name }}
