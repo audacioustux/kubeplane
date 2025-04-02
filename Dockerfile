@@ -1,18 +1,21 @@
-FROM cgr.dev/chainguard/rust AS builder
+FROM cgr.dev/chainguard/rust AS build
+
+USER root
 
 ARG TARGET
+ARG PROFILE
+ARG BIN
 
 WORKDIR /app
 COPY . .
 
-RUN --mount=type=cache,target=/usr/local/cargo/registry --mount=type=cache,target=target
-RUN RUSTFLAGS="-C target-feature=+crt-static" cargo build --release --target ${TARGET:?}
+ENV RUSTFLAGS="-C target-feature=+crt-static"
+RUN --mount=type=cache,target=target --mount=type=cache,target=/usr/local/cargo \
+    cargo build --target ${TARGET:?} --bin ${BIN:?} ${PROFILE:+--profile $PROFILE} \
+    cp target/${TARGET:?}/${PROFILE:-debug}/${BIN:?} /entrypoint
 
 FROM cgr.dev/chainguard/static AS runtime
 
-ARG TARGET
+COPY --from=build /entrypoint /
 
-WORKDIR /app
-COPY --from=builder /app/target/${TARGET:?}/release/kubeplane-operator /app/kubeplane-operator
-
-ENTRYPOINT ["/app/kubeplane-operator"]
+ENTRYPOINT ["/entrypoint"]
