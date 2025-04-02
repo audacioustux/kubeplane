@@ -36,7 +36,7 @@ jobs:
             target: aarch64-unknown-linux-gnu
             os: ubuntu-24.04-arm
     env:
-      GHCR_REPO: ghcr.io/${{ github.repository }}/${{ matrix.crate }}
+      GHCR_REPO: ghcr.io/${{ github.repository_owner }}/${{ matrix.crate }}
     steps:
       - name: Prepare
         run: |
