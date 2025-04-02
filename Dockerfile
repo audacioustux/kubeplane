@@ -11,7 +11,7 @@ COPY . .
 
 ENV RUSTFLAGS="-C target-feature=+crt-static"
 RUN --mount=type=cache,target=target --mount=type=cache,target=/usr/local/cargo \
-    cargo build --target ${TARGET:?} --bin ${BIN:?} ${PROFILE:+--profile $PROFILE} \
+    cargo build --target ${TARGET:?} --bin ${BIN:?} ${PROFILE:+--profile $PROFILE} && \
     cp target/${TARGET:?}/${PROFILE:-debug}/${BIN:?} /entrypoint
 
 FROM cgr.dev/chainguard/static AS runtime
