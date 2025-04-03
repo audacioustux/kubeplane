@@ -21,11 +21,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        crate:
-          - kubeplane-operator
-        profile:
-          - dev
-          - release
         platform:
           - linux/amd64
           - linux/arm64
@@ -41,7 +36,7 @@ jobs:
           echo "IMAGE_NAME=${IMAGE_NAME,,}" >>${GITHUB_ENV}
           echo "FULL_IMAGE_NAME=ghcr.io/${IMAGE_NAME,,}" >>${GITHUB_ENV}
         env:
-          IMAGE_NAME: "${{ matrix.crate }}${{ matrix.profile != 'release' && '-' + matrix.profile || '' }}"
+          IMAGE_NAME: "${{ github.repository }}"
 
       - name: Prepare
         run: |
@@ -76,7 +71,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           flavor: |
-            latest=${{ github.ref == 'refs/heads/main' && matrix.profile == 'release' }}
+            latest=${{ github.ref == 'refs/heads/main' }}
 
       - name: Extract metadata for Docker cache
         id: cache-meta
@@ -95,6 +90,7 @@ jobs:
         id: build
         with:
           context: .
+          target: bins
           push: true
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -103,9 +99,7 @@ jobs:
           cache-to: type=registry,ref=${{ steps.cache-meta.outputs.tags }},mode=max
           build-args: |
             BUILD_HASH=${{ github.sha }}
-            PROFILE=${{ matrix.profile }}
             TARGET=${{ matrix.target }}
-            CRATE=${{ matrix.crate }}
 
       - name: Export digest
         run: |
@@ -134,7 +128,7 @@ jobs:
           echo "IMAGE_NAME=${IMAGE_NAME,,}" >>${GITHUB_ENV}
           echo "FULL_IMAGE_NAME=ghcr.io/${IMAGE_NAME,,}" >>${GITHUB_ENV}
         env:
-          IMAGE_NAME: "${{ matrix.crate }}${{ matrix.profile != 'release' && '-' + matrix.profile || '' }}"
+          IMAGE_NAME: "${{ github.repository }}"
 
       - name: Download digests
         uses: actions/download-artifact@v4
@@ -165,7 +159,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           flavor: |
-            latest=${{ github.ref == 'refs/heads/main' && matrix.profile == 'release' }}
+            latest=${{ github.ref == 'refs/heads/main' }}
 
       - name: Create manifest list and push
         working-directory: /tmp/digests

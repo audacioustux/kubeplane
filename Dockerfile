@@ -2,9 +2,7 @@ FROM rust AS build
 
 USER root
 
-ARG CRATE
 ARG TARGET
-ARG PROFILE
 
 WORKDIR /app
 COPY . .
@@ -13,11 +11,13 @@ RUN rustup target add ${TARGET:?} && rustup show
 
 ENV RUSTFLAGS="-C target-feature=+crt-static"
 RUN --mount=type=cache,target=target --mount=type=cache,target=/usr/local/cargo/registry \
-    cargo build --target ${TARGET:?} --bin ${CRATE:?} --profile ${PROFILE} && \
-    cp target/${TARGET:?}/$(echo $PROFILE | sed 's/^dev$/debug/')/${CRATE:?} /entrypoint
+    cargo build --bins --target ${TARGET:?} && \
+    find target/${TARGET:?}/release -maxdepth 1 -type f -executable -exec cp '{}' bin \;
 
-FROM cgr.dev/chainguard/static AS runtime
+FROM cgr.dev/chainguard/static AS bins
 
-COPY --from=build /entrypoint /
+ENV PATH=/bin:$PATH
 
-ENTRYPOINT ["/entrypoint"]
+COPY --from=build /app/bin /
+
+ENTRYPOINT ls /bin
