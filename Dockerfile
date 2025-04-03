@@ -1,4 +1,4 @@
-FROM rust AS build
+FROM cgr.dev/chainguard/rust:latest-dev AS build
 
 USER root
 
@@ -11,7 +11,7 @@ RUN rustup target add ${TARGET:?} && rustup show
 
 ENV RUSTFLAGS="-C target-feature=+crt-static"
 RUN --mount=type=cache,target=target --mount=type=cache,target=/usr/local/cargo/registry \
-    cargo build --bins --target ${TARGET:?} && \
+    cargo build --bins --target ${TARGET:?} --release && \
     find target/${TARGET:?}/release -maxdepth 1 -type f -executable -exec cp '{}' bin \;
 
 FROM cgr.dev/chainguard/static AS bins
@@ -20,4 +20,5 @@ ENV PATH=/bin:$PATH
 
 COPY --from=build /app/bin /
 
-ENTRYPOINT ls /bin
+ENTRYPOINT ["ls"]
+CMD ["/bin"]
