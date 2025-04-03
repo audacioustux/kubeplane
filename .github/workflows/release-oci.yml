@@ -24,7 +24,7 @@ jobs:
         crate:
           - kubeplane-operator
         profile:
-          # - dev
+          - dev
           - release
         platform:
           - linux/amd64
@@ -36,14 +36,12 @@ jobs:
             target: aarch64-unknown-linux-gnu
             os: ubuntu-24.04-arm
     steps:
-      # GitHub Packages requires the entire repository name to be in lowercase
-      # although the repository owner has a lowercase username, this prevents some people from running actions after forking
       - name: Set repository and image name to lowercase
         run: |
           echo "IMAGE_NAME=${IMAGE_NAME,,}" >>${GITHUB_ENV}
           echo "FULL_IMAGE_NAME=ghcr.io/${IMAGE_NAME,,}" >>${GITHUB_ENV}
         env:
-          IMAGE_NAME: "${{ github.repository }}"
+          IMAGE_NAME: "${{ matrix.crate }}${{ matrix.profile != 'release' && '-' + matrix.profile || '' }}"
 
       - name: Prepare
         run: |
@@ -78,7 +76,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           flavor: |
-            latest=${{ github.ref == 'refs/heads/main' }}
+            latest=${{ github.ref == 'refs/heads/main' && matrix.profile == 'release' }}
 
       - name: Extract metadata for Docker cache
         id: cache-meta
@@ -105,8 +103,9 @@ jobs:
           cache-to: type=registry,ref=${{ steps.cache-meta.outputs.tags }},mode=max
           build-args: |
             BUILD_HASH=${{ github.sha }}
+            PROFILE=${{ matrix.profile }}
             TARGET=${{ matrix.target }}
-            BIN=${{ matrix.crate }}
+            CRATE=${{ matrix.crate }}
 
       - name: Export digest
         run: |
@@ -128,17 +127,14 @@ jobs:
       - build
     permissions:
       id-token: write
-      contents: read
       packages: write
     steps:
-      # GitHub Packages requires the entire repository name to be in lowercase
-      # although the repository owner has a lowercase username, this prevents some people from running actions after forking
       - name: Set repository and image name to lowercase
         run: |
           echo "IMAGE_NAME=${IMAGE_NAME,,}" >>${GITHUB_ENV}
           echo "FULL_IMAGE_NAME=ghcr.io/${IMAGE_NAME,,}" >>${GITHUB_ENV}
         env:
-          IMAGE_NAME: "${{ github.repository }}"
+          IMAGE_NAME: "${{ matrix.crate }}${{ matrix.profile != 'release' && '-' + matrix.profile || '' }}"
 
       - name: Download digests
         uses: actions/download-artifact@v4
@@ -169,7 +165,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
           flavor: |
-            latest=${{ github.ref == 'refs/heads/main' }}
+            latest=${{ github.ref == 'refs/heads/main' && matrix.profile == 'release' }}
 
       - name: Create manifest list and push
         working-directory: /tmp/digests

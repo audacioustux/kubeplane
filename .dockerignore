@@ -3,3 +3,4 @@
 !.cargo
 !Cargo.*
 !rust/
+!rust-toolchain.toml
