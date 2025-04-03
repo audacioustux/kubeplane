@@ -893,20 +893,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "kubeplane-operator"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "k8s-openapi",
- "kube",
- "serde",
- "serde_json",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "lazy_static"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1005,6 +991,20 @@ name = "openssl-probe"
 version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d05e27ee213611ffe7d6348b942e8f942b37114c00cc03cec254295a4a17852e"
+
+[[package]]
+name = "operator"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "k8s-openapi",
+ "kube",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
+]
 
 [[package]]
 name = "ordered-float"

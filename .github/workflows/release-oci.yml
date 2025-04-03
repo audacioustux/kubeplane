@@ -90,7 +90,7 @@ jobs:
         id: build
         with:
           context: .
-          target: bins
+          target: bin
           push: true
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}

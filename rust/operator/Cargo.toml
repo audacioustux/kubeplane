@@ -1,5 +1,5 @@
 [package]
-name = "kubeplane-operator"
+name = "operator"
 edition.workspace = true
 version.workspace = true
 authors.workspace = true
