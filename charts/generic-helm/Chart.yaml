@@ -10,3 +10,5 @@ keywords:
 maintainers:
   - email: kubeplane+charts@audacioustux.com
     name: Tanjim H.
+sources:
+  - https://github.com/audacioustux/kubeplane
