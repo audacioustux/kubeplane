@@ -36,6 +36,21 @@ entries:
     urls:
     - https://github.com/audacioustux/kubeplane/releases/download/generic-helm-0.2.2/generic-helm-0.2.2.tgz
     version: 0.2.2
+  kubeplane:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2025-04-04T13:40:57.98233166Z"
+    description: Kubeplane is a Kubernetes-native platform for building and managing
+      cloud-native applications.
+    digest: e3677a9e8d63616b12e259ef289b678d42aedefc04877760e889c593cf89233f
+    icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
+    maintainers:
+    - email: kubeplane+charts@audacioustux.com
+      name: Tanjim H.
+    name: kubeplane
+    urls:
+    - https://github.com/audacioustux/kubeplane/releases/download/kubeplane-0.0.0/kubeplane-0.0.0.tgz
+    version: 0.0.0
   platform:
   - apiVersion: v2
     appVersion: 0.1.0
@@ -60,4 +75,4 @@ entries:
     urls:
     - https://github.com/audacioustux/kubeplane/releases/download/platform-0.1.1/platform-0.1.1.tgz
     version: 0.1.1
-generated: "2025-03-26T22:33:55.699515291Z"
+generated: "2025-04-04T13:40:57.982343422Z"
