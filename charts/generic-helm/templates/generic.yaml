@@ -1,22 +1,8 @@
-{{- /*
-This template iterates over two value sets:
-1. .Values.map (a flat map): For each key/value pair, if metadata.name is not provided, the key is used.
-2. .Values.list (a list): For each manifest, if metadata.name is not provided, a generated name of the form:
-   {RELEASE-NAME}-{sha1sum({manifest})} is used.
-*/ -}}
-
-{{- /* Get the release name */ -}}
 {{- $releaseName := .Release.Name }}
 
-{{- /* Generate manifests from the flat map in .Values.map */ -}}
 {{- range $key, $manifest := .Values.map }}
-  {{- /*
-      Create a metadata block.
-      If $manifest.metadata exists, merge it with a default name using the key.
-  */ -}}
   {{- $metadata := dict "name" $key }}
   {{- if $manifest.metadata }}
-    {{- /* If a name is already provided, keep it; otherwise, use the key */ -}}
     {{- $metadata = merge $manifest.metadata (dict "name" ($manifest.metadata.name | default $key)) }}
   {{- end }}
   {{- $finalManifest := merge $manifest (dict "metadata" $metadata) }}
@@ -24,12 +10,7 @@ This template iterates over two value sets:
 ---
 {{- end }}
 
-{{- /* Generate manifests from the list in .Values.list */ -}}
 {{- range $index, $manifest := .Values.list }}
-  {{- /*
-      For each manifest, if metadata.name is not provided, generate a name.
-      The generated name follows the pattern: {RELEASE-NAME}-{sha1sum({manifest})}
-  */ -}}
   {{- $manifestStr := printf "%s" (toJson $manifest) }}
   {{- $defaultName := printf "%s-%s" (trunc 24 $releaseName) (sha1sum $manifestStr | trunc 10) }}
   {{- $metadata := dict "name" $defaultName }}

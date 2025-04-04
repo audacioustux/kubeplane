@@ -2,7 +2,11 @@ apiVersion: v2
 name: generic-helm
 description: Chart to deploy any YAML file
 icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
-version: 1.0.0
+version: 1.0.1
+keywords:
+  - generic
+  - map
+  - list
 maintainers:
   - email: kubeplane+charts@audacioustux.com
     name: Tanjim H.

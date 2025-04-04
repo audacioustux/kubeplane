@@ -2,14 +2,15 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Values schema for generic-chart",
     "type": "object",
+    "description": "Manifests can be specified as either a flat map (easier to partially override), a list, or both. Additional keys are allowed (can be used to declare yaml anchors), but they will be ignored.",
     "properties": {
         "map": {
             "type": "object",
-            "description": "A flat map of manifests keyed by a unique identifier. The key is used as the resource name if metadata.name is not provided. Users should define only the manifests they wish to deploy.",
+            "description": "A flat map of manifests keyed by a unique identifier. The key is used as the resource name if metadata.name is not provided.",
             "patternProperties": {
                 "^[a-zA-Z0-9-_]+$": {
                     "type": "object",
-                    "description": "Manifest definition as a partial Kubernetes manifest. It will be merged with defaults based on the resource kind."
+                    "description": "Any kubernetes manifest"
                 }
             },
             "additionalProperties": false,
@@ -17,10 +18,10 @@
         },
         "list": {
             "type": "array",
-            "description": "A list of manifests. If metadata.name is not provided, a generated name (e.g. manifest-0, manifest-1, etc.) will be assigned.",
+            "description": "A list of manifests. If metadata.name is not provided, a generated name of the form: {RELEASE-NAME}{24}-{sha1sum({manifest})}{10} is used.",
             "items": {
                 "type": "object",
-                "description": "Manifest definition as a partial Kubernetes manifest. It will be merged with defaults based on the resource kind."
+                "description": "Any kubernetes manifest"
             },
             "default": []
         }
