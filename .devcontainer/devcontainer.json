@@ -36,7 +36,8 @@
         "PKief.material-icon-theme",
         "tamasfe.even-better-toml",
         "rust-lang.rust-analyzer",
-        "fill-labs.dependi"
+        "fill-labs.dependi",
+        "MetalBear.mirrord"
       ]
     }
   },

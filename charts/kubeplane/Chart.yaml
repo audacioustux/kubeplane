@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kubeplane
+description: Kubeplane is a Kubernetes-native platform for building and managing cloud-native applications.
+icon: https://audacioustux.github.io/kubeplane/assets/kubeplane.svg
+version: 0.0.0
+appVersion: latest
+maintainers:
+  - email: kubeplane+charts@audacioustux.com
+    name: Tanjim H.

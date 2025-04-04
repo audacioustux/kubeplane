@@ -1,5 +1,5 @@
 [package]
-name = "operator"
+name = "kp-operator"
 edition.workspace = true
 version.workspace = true
 authors.workspace = true

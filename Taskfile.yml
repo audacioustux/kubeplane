@@ -15,3 +15,13 @@ tasks:
   default:
     desc: Show all available tasks
     cmd: task --list-all
+
+  cargo:check: cargo watch -x check
+  cargo:watch: >-
+    mirrord exec -f .mirrord/mirrord.json -- cargo watch
+    --no-vcs-ignores -w target/debug
+    -x 'run'
+  cargo:dev:
+    deps:
+      - cargo:check
+      - cargo:watch
